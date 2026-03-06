@@ -17,10 +17,10 @@ export default function CategorySection() {
     <section className="max-w-6xl mx-auto py-16 px-4">
       <div className="flex justify-between items-center mb-10">
         <h2 className="text-3xl font-bold">
-          Explore by <span className="text-blue-500">category</span>
+          Explore by <span className="text-[#26a4ff]">Category</span>
         </h2>
 
-        <button className="text-blue-500 font-medium">
+        <button className="text-[#26a4ff] font-medium">
           Show all jobs →
         </button>
       </div>

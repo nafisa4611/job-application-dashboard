@@ -7,12 +7,12 @@ export default function Footer() {
 
             <div className="max-w-6xl mx-auto">
 
-                <div className="grid md:grid-cols-4 gap-12 mb-16">
+                <div className="grid md:grid-cols-4 mb-6">
 
                     {/* Logo */}
                     <div>
                         <div className="flex items-center gap-3 mb-6">
-                            <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center font-bold">
+                            <div className="w-8 h-8 bg-[#4640DE] rounded-full flex items-center justify-center font-bold">
                                 Q
                             </div>
                             <h2 className="text-xl font-bold">QuickHire</h2>
@@ -58,15 +58,15 @@ export default function Footer() {
                             The latest job news, articles, sent to your inbox weekly.
                         </p>
 
-                        <div className="flex">
+                        <div className="flex gap-2">
 
                             <input
                                 type="email"
                                 placeholder="Email Address"
-                                className="flex-1 px-4 py-3 text-sm text-gray-900 rounded-l-md outline-none"
+                                className="flex-1 p-2 text-sm rounded-l-md border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                             />
 
-                            <button className="bg-blue-600 px-6 py-3 text-sm font-semibold rounded-r-md hover:bg-blue-700 transition">
+                            <button className="bg-blue-600 px-6 py-3 text-sm font-semibold rounded-r-md hover:bg-blue-700 transition cursor-pointer">
                                 Subscribe
                             </button>
 
@@ -77,7 +77,7 @@ export default function Footer() {
                 </div>
 
                 {/* Bottom */}
-                <div className="border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center">
+                <div className="border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-center items-center gap-2">
 
                     <p className="text-xs text-gray-500">
                         2021 © QuickHire. All rights reserved.

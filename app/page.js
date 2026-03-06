@@ -4,20 +4,19 @@ import axios from 'axios';
 
 // Components
 import Hero from './components/Hero';
-
-import Footer from './components/Footer';
-import JobCard from './components/JobCard';
-import FeaturedJobCard from './components/FeaturedJobCard';
 import CompanyBanner from './components/CompanyBanner';
 import CategorySection from './components/CategorySection';
 import PostJobBanner from './components/PostJobBanner';
+import FeaturedJobCard from './components/FeaturedJobCard';
+import Footer from './components/Footer';
+import LatestJobs from './components/LatestJobs';
 
 export default function Home() {
   const [backendJobs, setBackendJobs] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // 1. Hardcoded data from your screenshots to ensure the UI looks full
-  const screenshotJobs = [
+  // Screenshot Data (Placeholders)
+  const defaultJobs = [
     { _id: 's1', title: 'Email Marketing', company: 'Revolut', location: 'Madrid, Spain', description: 'Revolut is looking for Email Marketing to help team ma...', category: 'Marketing', logo: 'R' },
     { _id: 's2', title: 'Brand Designer', company: 'Dropbox', location: 'San Fransisco, US', description: 'Dropbox is looking for Brand Designer to help the team t...', category: 'Design', logo: 'D' },
     { _id: 's3', title: 'Email Marketing', company: 'Pitch', location: 'Berlin, Germany', description: 'Pitch is looking for Customer Manager to join marketing t...', category: 'Marketing', logo: 'P' },
@@ -42,66 +41,43 @@ export default function Home() {
     fetchJobs();
   }, []);
 
-  // Merge: Backend jobs come first, followed by screenshot jobs to fill the grid (Max 8)
-  const displayFeatured = [...backendJobs, ...screenshotJobs].slice(0, 8);
+  // Merge logic: Real jobs first, then placeholders to fill the 8-slot grid
+  const displayJobs = [...backendJobs, ...defaultJobs].slice(0, 8);
 
   return (
     <main className="min-h-screen bg-white">
+      {/* 1. Hero & Brands */}
       <Hero />
       <CompanyBanner />
-      {/* Social Proof Section */}
-      <div className="py-10 border-b border-gray-100">
-        <div className="max-w-6xl mx-auto px-6 flex flex-wrap justify-between items-center opacity-40 grayscale">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Vodafone_Logo.svg" alt="Vodafone" className="h-6" />
-          <img src="https://upload.wikimedia.org/wikipedia/commons/d/da/Intel_logo_%282020%29.svg" alt="Intel" className="h-8" />
-          <img src="https://upload.wikimedia.org/wikipedia/commons/b/bd/Tesla_Motors.svg" alt="Tesla" className="h-5" />
-          <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/AMD_Logo.svg" alt="AMD" className="h-6" />
-        </div>
-      </div>
 
+      {/* 2. Categories */}
       <CategorySection />
+
+      {/* 3. Call to Action Banner */}
       <PostJobBanner />
 
-      {/* Featured Jobs Section - Matches Screenshot 225929.png */}
+      {/* 4. Featured Jobs Section (Square Cards) */}
       <section className="py-20 max-w-6xl mx-auto px-6">
         <div className="flex justify-between items-center mb-10">
           <h1 className="text-4xl font-bold text-slate-900">
-            Featured <span className="text-blue-500">jobs</span>
+            Featured <span className="text-[#26a4ff]">Jobs</span>
           </h1>
-          <span className="text-blue-600 font-bold cursor-pointer hover:underline">Show all jobs →</span>
+          <span className="text-[#26a4ff] font-bold cursor-pointer hover:underline">
+            Show all jobs →
+          </span>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {displayFeatured.map((job) => (
+          {displayJobs.map((job) => (
             <FeaturedJobCard key={job._id} job={job} />
           ))}
         </div>
       </section>
 
-      {/* Latest Jobs Section */}
-      <section className="py-20 bg-slate-50">
-        <div className="max-w-6xl mx-auto px-6">
+      {/* 5. Latest Jobs Section (Horizontal Cards) */}
+      <LatestJobs jobs={backendJobs} />
 
-          <div className="flex justify-between items-center mb-10">
-            <h2 className="text-4xl font-bold text-slate-900">
-              Latest <span className="text-blue-500">jobs open</span>
-            </h2>
-            <span className="text-blue-600 font-bold cursor-pointer hover:underline">
-              Show all jobs →
-            </span>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            {[...backendJobs, ...screenshotJobs]
-              .slice(0, 8)
-              .map((job) => (
-                <JobCard key={job._id} job={job} />
-              ))}
-          </div>
-
-        </div>
-      </section>
-
+      {/* 6. Footer */}
       <Footer />
     </main>
   );
