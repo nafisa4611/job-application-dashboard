@@ -1,11 +1,12 @@
 import Navbar from './components/Navbar';
 import './globals.css';
-import Link from 'next/link';
+import { Toaster } from 'react-hot-toast';
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
+        <Toaster position="top-center" reverseOrder={false} />
         <Navbar />
         {children}
       </body>
