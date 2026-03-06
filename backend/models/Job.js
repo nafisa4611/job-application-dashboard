@@ -5,8 +5,8 @@ const JobSchema = new mongoose.Schema({
     company: { type: String, required: true },
     location: { type: String, required: true },
     category: { type: String, required: true },
-    description: { type: String }, // Added for Detail Page
-    createdAt: { type: Date, default: Date.now }
-});
+    description: { type: String, required: true },
+}, { timestamps: true });
+
 
 module.exports = mongoose.model('Job', JobSchema);

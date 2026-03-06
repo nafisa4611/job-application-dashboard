@@ -1,3 +1,4 @@
+import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import './globals.css';
 import { Toaster } from 'react-hot-toast';
@@ -9,6 +10,7 @@ export default function RootLayout({ children }) {
         <Toaster position="top-center" reverseOrder={false} />
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );

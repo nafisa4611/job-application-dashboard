@@ -21,7 +21,7 @@ export default function PostJobBanner() {
         
         <div className="mt-12 md:mt-0 z-10 shadow-2xl relative">
           <Image 
-            src="/dashboard.png" 
+            src="/dashboard.jpg" 
             width={550} 
             height={350} 
             alt="Dashboard Preview" 

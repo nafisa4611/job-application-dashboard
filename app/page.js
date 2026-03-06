@@ -8,14 +8,13 @@ import CompanyBanner from './components/CompanyBanner';
 import CategorySection from './components/CategorySection';
 import PostJobBanner from './components/PostJobBanner';
 import FeaturedJobCard from './components/FeaturedJobCard';
-import Footer from './components/Footer';
 import LatestJobs from './components/LatestJobs';
 
 export default function Home() {
   const [backendJobs, setBackendJobs] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Screenshot Data (Placeholders)
+
   const defaultJobs = [
     { _id: 's1', title: 'Email Marketing', company: 'Revolut', location: 'Madrid, Spain', description: 'Revolut is looking for Email Marketing to help team ma...', category: 'Marketing', logo: 'R' },
     { _id: 's2', title: 'Brand Designer', company: 'Dropbox', location: 'San Fransisco, US', description: 'Dropbox is looking for Brand Designer to help the team t...', category: 'Design', logo: 'D' },
@@ -33,7 +32,7 @@ export default function Home() {
         const res = await axios.get('http://localhost:5000/api/jobs');
         setBackendJobs(res.data);
       } catch (err) {
-        console.error("Backend fetch failed, using screenshot data only.");
+        console.error("Backend fetch failed.");
       } finally {
         setLoading(false);
       }
@@ -41,7 +40,7 @@ export default function Home() {
     fetchJobs();
   }, []);
 
-  // Merge logic: Real jobs first, then placeholders to fill the 8-slot grid
+ 
   const displayJobs = [...backendJobs, ...defaultJobs].slice(0, 8);
 
   return (
@@ -76,9 +75,6 @@ export default function Home() {
 
       {/* 5. Latest Jobs Section (Horizontal Cards) */}
       <LatestJobs jobs={backendJobs} />
-
-      {/* 6. Footer */}
-      <Footer />
     </main>
   );
 }

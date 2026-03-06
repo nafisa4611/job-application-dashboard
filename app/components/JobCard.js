@@ -1,4 +1,4 @@
-// frontend/components/JobCard.js
+
 import Link from 'next/link';
 
 export default function JobCard({ job }) {
@@ -17,7 +17,7 @@ export default function JobCard({ job }) {
           </div>
         </div>
       </div>
-      <Link href={`/job/${job._id}`} className="px-6 py-2 border-2 border-blue-600 text-blue-600 rounded-lg font-bold hover:bg-blue-600 hover:text-white transition">
+      <Link href={`/jobs/${job._id}`} className="px-6 py-2 border-2 border-blue-600 text-blue-600 rounded-lg font-bold hover:bg-blue-600 hover:text-white transition">
         Apply
       </Link>
     </div>
