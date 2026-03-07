@@ -1,36 +1,89 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+🚀 QuickHire - Simple Job Board Application
+QuickHire is a modern, mini job board platform built as a technical assessment. It allows users to browse, search, and apply for startup jobs while providing a streamlined interface for admins to manage listings.
 
-## Getting Started
+📋 Project Overview
+This project consists of a Next.js 15 frontend and a Node.js/Express backend, integrated with MongoDB Atlas for data persistence. The UI is strictly implemented based on the provided Figma design, focusing on clean typography, responsive layouts, and professional UX.
 
-First, run the development server:
+✨ Features
+Frontend (Next.js)
+Job Listings: Real-time search and filtering by category (Design, Engineering, Marketing) and location.
 
-```bash
+Auto-Reset Search: The listing automatically resets to show all jobs when the search query is deleted.
+
+Job Details: Dynamic routing to display full job descriptions.
+
+Application Form: "Apply Now" functionality with validation for Email and Resume URLs.
+
+Admin Dashboard: Dedicated view to post new jobs and delete existing listings.
+
+Responsive UI: Mobile-first design using Tailwind CSS.
+
+Backend (Node.js/Express)
+RESTful API: Endpoints for job management and application submissions.
+
+Validation: Server-side checks for mandatory fields and data formats.
+
+CORS Enabled: Configured to allow secure communication with the Vercel deployment.
+
+🛠️ Tech Stack
+Frontend: Next.js 15 (App Router), Tailwind CSS, Axios, React Icons.
+
+Backend: Node.js, Express.js, Mongoose, Dotenv, Cors.
+
+Database: MongoDB Atlas.
+
+Deployment: Vercel (Frontend), Render (Backend).
+
+📂 Project Structure
+
+/quickhire-task
+├── /backend
+│   ├── /config         # Database connection
+│   ├── /models         # Mongoose Schemas (Job, Application)
+│   ├── /routes         # API Route definitions
+│   └── server.js       # Entry point
+└── /frontend
+    ├── /app            # Next.js App Router (Jobs, Admin, Details)
+    ├── /components     # Reusable UI (JobCard, Navbar, Footer, Banner)
+    └── /public         # Static assets (Hero images, Logos)
+
+
+⚙️ Installation & Setup
+1. Backend Setup
+Navigate to the backend directory.
+
+Install dependencies:
+
+Bash
+npm install
+Create a .env file in the root of the backend folder:
+
+Code snippet
+PORT=5000
+MONGO_URI=your_mongodb_atlas_connection_string
+Start the server:
+
+Bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+2. Frontend Setup
+Navigate to the frontend directory.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Install dependencies:
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Bash
+npm install
+Create a .env.local file in the root of the frontend folder:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Code snippet
+NEXT_PUBLIC_API_URL=http://localhost:5000/api
+Run the development server:
 
-## Learn More
+Bash
+npm run dev
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Method,Endpoint,Description
+GET,/api/jobs,Fetch all job listings
+GET,/api/jobs/:id,Get details for a specific job
+POST,/api/jobs,Create a new job listing (Admin)
+DELETE,/api/jobs/:id,Delete a job listing (Admin)
+POST,/api/applications,Submit a job application
