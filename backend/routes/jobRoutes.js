@@ -1,9 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const Job = require('../models/Job'); // Ensure this path correctly points to your Job model
+const Job = require('../models/Job'); 
 
-// @route   GET /api/jobs
-// @desc    Get all jobs (For Home Page and Admin List)
+
 router.get('/', async (req, res) => {
   try {
     const jobs = await Job.find().sort({ createdAt: -1 });
@@ -13,8 +12,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// @route   GET /api/jobs/:id
-// @desc    Get a single job by ID (For Job Details Page)
+
 router.get('/:id', async (req, res) => {
   try {
     const job = await Job.findById(req.params.id);
@@ -30,8 +28,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// @route   POST /api/jobs
-// @desc    Create a new job (For Admin Dashboard)
+
 router.post('/', async (req, res) => {
   const { title, company, location, category, description } = req.body;
 
@@ -51,8 +48,6 @@ router.post('/', async (req, res) => {
   }
 });
 
-// @route   DELETE /api/jobs/:id
-// @desc    Delete a job by ID (For Admin Dashboard)
 router.delete('/:id', async (req, res) => {
   try {
     const jobId = req.params.id;
